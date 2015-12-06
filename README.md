@@ -90,7 +90,36 @@ What's missing?
 
 You might notice the project's angular code style is diferent from the other starter templates. This is for two reasons:
 * It's Typescript, I had to do some things diferently to do with how is best to code for Typescript
-* I Hate using $scope, I also do not like having all the controllers thrown together.
+* I Hate using $scope, I also do not like having all the controllers thrown together. To get around not using $scope I am using the 'as' keyword inside of my route config inside app.ts, i.e.:
+
+```javascript
+// app.ts
+$stateProvider
+	.state('app.playlists', {
+        url: '/playlists',
+        views: {
+          menuContent: {
+            templateUrl: 'templates/playlists.html',
+            controller: 'PlaylistController as vm'
+          }
+        }
+      })
+```
+
+then instead of being able to access the viewmodel inside the view directly, you add vm infront like so:
+
+```html
+<!-- playlists.html -->
+<ion-view view-title="Typescript Playlists">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="playlist in vm.playlists" href="#/app/playlists/{{playlist.id}}">
+        {{playlist.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+```
 
 This is one of my first Angular apps and it's my first time using angular-ui so if you see somthing stupid or somthing you think could be done better in this template, PLEASE make a pull request or contact me at contact@mcrook.com
 
