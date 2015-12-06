@@ -16,6 +16,9 @@ $ ionic start myApp https://github.com/falconmick/ionic-ts-starter-sidemenu
 ```
 
 ### Setting up Typescript in Visual Studio Code
+
+Open Visual Studio Code and open the myApp folder!
+
 inside of the root folder of the project create a new file called tsconfig.json
 
 ```javascript
@@ -39,6 +42,32 @@ Next hit ctrl+shift+b (have a .ts file selected if nothing happens, i.e. www/app
 You will get a notification saying "No task runner configured." hit Configure Task Runner
 
 The file that it creates will let you setup your build scripts. To keep things simple we will continue to use the default option. All you need to do is remove "HelloWorld.ts" from the "args"
+
+you will end up with somthing like this:
+
+```javascript
+// A task runner that calls the Typescript compiler (tsc) and
+// Compiles a HelloWorld.ts program
+{
+	"version": "0.1.0",
+
+	// The command is tsc. Assumes that tsc has been installed using npm install -g typescript
+	"command": "tsc",
+
+	// The command is a shell script
+	"isShellCommand": true,
+
+	// Show the output window only if unrecognized errors occur.
+	"showOutput": "silent",
+
+	// args is the HelloWorld program to compile.
+	"args": [], // <---- "HelloWorld.ts" has been removed
+
+	// use the standard tsc problem matcher to find compile problems
+	// in the output.
+	"problemMatcher": "$tsc"
+}
+```
 
 Hit ctrl+shift+b again and your Typescript should build! To verify look into your www/js/ directory. You should find app.js and app.js.map if you left mapping on.
 
