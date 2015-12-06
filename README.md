@@ -29,11 +29,17 @@ inside of the root folder of the project create a new file called tsconfig.json
         "removeComments": true,
         "preserveConstEnums": true,
         "out": "www/js/app.js",
-        "sourceMap": true,
-		"sourceRoot": "www/app"
-    }
+        "sourceMap": true
+    },
+    "files": [
+        "./www/app/app.ts",
+        "./www/app/menu/menuController.ts",
+        "./www/app/playlists/playlistsController.ts"
+    ]
 }
 ```
+
+*for now you have to manually add each ts file when you create them. Do you know how to make ts build only www/app? feel free to answer here! http://stackoverflow.com/questions/34117191/tsconfig-json-only-build-ts-files-from-folder*
 
 the above will setup the compilor options when you hit build
 
